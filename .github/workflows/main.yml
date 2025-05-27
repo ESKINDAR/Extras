@@ -1,0 +1,25 @@
+name: PlatformIO Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+      
+      - name: Configurar PlatformIO
+        run: |
+          pip install platformio
+      
+      - name: Compilar el proyecto
+        run: |
+          platformio run
